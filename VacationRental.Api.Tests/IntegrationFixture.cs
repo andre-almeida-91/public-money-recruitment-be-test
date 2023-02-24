@@ -11,18 +11,17 @@ namespace VacationRental.Api.Tests
     {
         private readonly TestServer _server;
 
-        public HttpClient Client { get; }
+        public HttpClient _client { get; }
 
         public IntegrationFixture()
         {
             _server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
-
-            Client = _server.CreateClient();
+            _client = _server.CreateClient();
         }
 
         public void Dispose()
         {
-            Client.Dispose();
+            _client.Dispose();
             _server.Dispose();
         }
     }
